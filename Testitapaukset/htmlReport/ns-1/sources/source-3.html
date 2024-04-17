@@ -1,0 +1,150 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > TimeUtilsTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">main</a>
+</div>
+
+<h1>Coverage Summary for Class: TimeUtilsTest (main)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TimeUtilsTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package main;
+&nbsp;
+&nbsp;import org.junit.jupiter.params.ParameterizedTest;
+&nbsp;import org.junit.jupiter.params.provider.CsvSource;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertEquals;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertThrows;
+&nbsp;
+<b class="fc">&nbsp;public class TimeUtilsTest {</b>
+<b class="fc">&nbsp;    TimeUtils tu = new TimeUtils();</b>
+&nbsp;
+&nbsp;    @ParameterizedTest(name = &quot;{0} sekuntia on yhtä kuin {1}&quot;)
+&nbsp;    @CsvSource({
+&nbsp;            &quot;-60, Invalid argument&quot;,
+&nbsp;            &quot;0, 0:00:00&quot;,
+&nbsp;            &quot;60, 0:01:00&quot;,
+&nbsp;            &quot;59, 0:00:59&quot;,
+&nbsp;            &quot;3600, 1:00:00&quot;,
+&nbsp;            &quot;3599, 0:59:59&quot;,
+&nbsp;            &quot;1000000, 277:46:40&quot;,
+&nbsp;            &quot;61, 0:01:01&quot;,
+&nbsp;            &quot;3601, 1:00:01&quot;,
+&nbsp;            &quot;3661, 1:01:01&quot;
+&nbsp;    })
+&nbsp;    public void testSecToTime(int sec, String time) {
+<b class="fc">&nbsp;        if(sec &gt;= 0) {</b>
+<b class="fc">&nbsp;            String msg = sec + &quot; väärin!&quot;;</b>
+<b class="fc">&nbsp;            assertEquals(time, TimeUtils.secToTime(sec), msg);</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            assertThrows(IllegalArgumentException.class, () -&gt; {</b>
+<b class="fc">&nbsp;                TimeUtils.secToTime(sec);</b>
+&nbsp;            });
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-17 21:58</div>
+</div>
+</body>
+</html>
