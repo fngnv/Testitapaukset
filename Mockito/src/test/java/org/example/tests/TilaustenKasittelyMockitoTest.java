@@ -28,7 +28,6 @@ public class TilaustenKasittelyMockitoTest {
 
     @Test
     public void testaaAlle100() {
-        // Arrange
         float alkusaldo = 100.0f;
         float listaHinta = 50.0f;
         float alennus = 20.0f;
@@ -37,7 +36,6 @@ public class TilaustenKasittelyMockitoTest {
         Asiakas asiakas = new Asiakas(alkusaldo);
         Tuote tuote = new Tuote("TDD in Action", listaHinta);
 
-        // Mock behavior
         when(hinnoittelijaMock.getAlennusProsentti(asiakas, tuote)).thenAnswer(invocation -> {
             if (tuote.getHinta() >= 100) {
                 return alennus5;
@@ -46,12 +44,10 @@ public class TilaustenKasittelyMockitoTest {
             }
         });
 
-        // Act
         TilaustenKäsittely kasittelija = new TilaustenKäsittely();
         kasittelija.setHinnoittelija(hinnoittelijaMock);
         kasittelija.käsittele(new Tilaus(asiakas, tuote));
 
-        // Assert
         assertEquals(loppuSaldo, asiakas.getSaldo(), 0.001);
         verify(hinnoittelijaMock, atLeastOnce()).aloita();
         verify(hinnoittelijaMock, times(2)).getAlennusProsentti(asiakas, tuote);
@@ -60,7 +56,6 @@ public class TilaustenKasittelyMockitoTest {
 
     @Test
     public void testaa100() {
-        // Arrange
         float alkusaldo = 100.0f;
         float listaHinta = 100.0f;
         float alennus = 20.0f;
@@ -69,7 +64,6 @@ public class TilaustenKasittelyMockitoTest {
         Asiakas asiakas = new Asiakas(alkusaldo);
         Tuote tuote = new Tuote("TDD in Action", listaHinta);
 
-        // Mock behavior
         when(hinnoittelijaMock.getAlennusProsentti(asiakas, tuote)).thenAnswer(invocation -> {
             if (tuote.getHinta() >= 100) {
                 return alennus5;
@@ -78,12 +72,10 @@ public class TilaustenKasittelyMockitoTest {
             }
         });
 
-        // Act
         TilaustenKäsittely kasittelija = new TilaustenKäsittely();
         kasittelija.setHinnoittelija(hinnoittelijaMock);
         kasittelija.käsittele(new Tilaus(asiakas, tuote));
 
-        // Assert
         assertEquals(loppuSaldo5, asiakas.getSaldo(), 0.001);
         verify(hinnoittelijaMock, atLeastOnce()).aloita();
         verify(hinnoittelijaMock, times(2)).getAlennusProsentti(asiakas, tuote);
