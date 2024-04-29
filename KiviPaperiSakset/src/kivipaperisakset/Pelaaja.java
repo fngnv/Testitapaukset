@@ -33,7 +33,7 @@ public class Pelaaja {
     }
 
     /**
-     * Metodin kasvattaa voittojen lukumäärää yhdellö
+     * Metodi kasvattaa voittojen lukumäärää yhdellä
      */
     public void kasvataVoitot() {
         voitot ++;
