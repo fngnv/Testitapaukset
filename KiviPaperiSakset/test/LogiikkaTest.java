@@ -14,10 +14,8 @@ public class LogiikkaTest {
         p1 = new PelaajaStub("kivi");
         p2 = new PelaajaStub("sakset");
         pelinLogiikka = new PelinLogiikka(p1, p2);
-        // Run the method under test
         pelinLogiikka.pelaa();
 
-        // Verify that the correct methods were called on the stub objects
         assertEquals(3, p1.getVoitot());
         assertEquals(0, p2.getVoitot());
     }
@@ -27,15 +25,12 @@ public class LogiikkaTest {
         p1 = new PelaajaStub("paperi");
         p2 = new PelaajaStub("sakset");
         pelinLogiikka = new PelinLogiikka(p1, p2);
-        // Run the method under test
         pelinLogiikka.pelaa();
 
-        // Verify that the correct methods were called on the stub objects
         assertEquals(0, p1.getVoitot());
         assertEquals(3, p2.getVoitot());
     }
 
-    // Stub class for Pelaaja
     class PelaajaStub extends Pelaaja {
         private String valinta;
 
